@@ -25,4 +25,4 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = 'ucf.assignments.GUIDemo'
+mainClassName = 'ucf.assignments.ListManager'
