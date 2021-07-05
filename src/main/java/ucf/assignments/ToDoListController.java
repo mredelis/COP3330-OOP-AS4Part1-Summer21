@@ -88,7 +88,6 @@ public class ToDoListController implements Initializable {
         // When user double clicked on a cell, get the selected Item Object
         // get the new item description
         // call method setItemDescription from the Item Object and pass the new description
-
     }
 
     public void updateDueDateCellEvent() {
@@ -106,9 +105,7 @@ public class ToDoListController implements Initializable {
     }
 
     public void removeButtonClicked() {
-        // Get an ObservableList of all items on tableView
-        // Get an ObservableList of the selected item(s) in tableView
-        // Delete from allItems list the selectedItems (for loop to iterate)
+        remove();
     }
 
     // Method to go back to the ListManager Scene
@@ -119,17 +116,17 @@ public class ToDoListController implements Initializable {
          return getToDoList();
     }
 
-
     public void viewAllTasksMenuItemClicked() {
-
+        filter("");
     }
 
     public void viewCompletedTasksMenuItemClicked() {
+        filter("Completed");
 
     }
 
     public void viewUncompletedTasksMenuItemClicked() {
-
+        filter("Uncompleted");
     }
 
 
@@ -157,6 +154,24 @@ public class ToDoListController implements Initializable {
         ObservableList<ToDoList> singleList = (ObservableList<ToDoList>) new ToDoList(name, item);
 
         return (ToDoList) singleList;
+    }
+
+    public void remove(){
+        // Get an ObservableList of allItems in tableView
+        // Get an ObservableList of the selectedItem(s) in tableView
+        // Iterate through the selectedItems list
+        // Remove from allItems list the items from selectedItems
+
+    }
+
+    public void filter(String searchValue){
+        // Get an ObservableList of all Items in tableView
+        // Wrap the ObservableList in a Filtered List (display all data at first)
+        // Set the filter Predicate to the searchValue (blank for all items, Completed or Uncompleted)
+        // Compare itemDescription of every item in the list with the searchValue
+        // Wrap the FilteredList in a SortedList
+        // Bind the SortedList comparator to the TableView comparator.
+        // Add sorted (and filtered) data to the table
     }
 
 }

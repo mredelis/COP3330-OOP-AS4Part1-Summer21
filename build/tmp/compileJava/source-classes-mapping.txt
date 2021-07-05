@@ -1,10 +1,10 @@
-ucf/assignments/Item.java
- ucf.assignments.Item
-ucf/assignments/ToDoList.java
- ucf.assignments.ToDoList
 ucf/assignments/ListManager.java
  ucf.assignments.ListManager
+ucf/assignments/ToDoList.java
+ ucf.assignments.ToDoList
 ucf/assignments/ToDoListController.java
  ucf.assignments.ToDoListController
 ucf/assignments/ToDoListMasterController.java
  ucf.assignments.ToDoListMasterController
+ucf/assignments/Item.java
+ ucf.assignments.Item

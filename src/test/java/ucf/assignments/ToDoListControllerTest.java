@@ -31,21 +31,14 @@ class ToDoListControllerTest {
     }
 
     @Test
-    void updateItemDescriptionCellEvent() {
+    void removedTest() {
         // make a new ToDoListController
-    }
+        // Get the selected Item in tableview
+        // Get all the Items in tableView
+        // Set expected value to a know tableView of Item
 
-    @Test
-    void updateDueDateCellEvent() {
-    }
-
-    @Test
-    void updateStatusCellEvent() {
-    }
-
-    @Test
-    void removeButtonClicked() {
-
+        // call remove() method -> actual
+        // assert that actual list is equal to expected
     }
 
     @Test
@@ -62,14 +55,13 @@ class ToDoListControllerTest {
     }
 
     @Test
-    void viewAllTasksMenuItemClicked() {
+    void filter(){
+        // make a new ToDoListController
+        // Create dummy ObservableList of Items
+        // Create a dummy ObservableList of filtered Items from the above List -> expected
+
+        // Call filter() method with a searchText String for the Status Column -> actual
+        // assert that the expected value is equal to the actual value
     }
 
-    @Test
-    void viewCompletedTasksMenuItemClicked() {
-    }
-
-    @Test
-    void viewUncompletedTasksMenuItemClicked() {
-    }
 }
