@@ -8,7 +8,9 @@ package ucf.assignments;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 
-public class ToDoList {
+import java.io.Serializable;
+
+public class ToDoList implements Serializable {
 
     private SimpleStringProperty ToDoListName;
     private ObservableList<Item> ToDoListItems;
@@ -26,14 +28,18 @@ public class ToDoList {
         this.ToDoListName = new SimpleStringProperty(ToDoListName);
     }
 
-    public ObservableList<Item> getToDoListItems(){
+    public ObservableList<Item> getToDoListItems() {
         return ToDoListItems;
     }
 
-    public void setToDoListItems(ObservableList<Item> ToDoListItems){
+    public void setToDoListItems(ObservableList<Item> ToDoListItems) {
         this.ToDoListItems = ToDoListItems;
     }
 
 
+    @Override
+    public String toString(){
+        return "ToDoList Name:" + ToDoListName + "\nItems: " + ToDoListItems;
+    }
 }
 

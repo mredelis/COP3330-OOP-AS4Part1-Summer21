@@ -44,7 +44,7 @@
             </HBox>
             <HBox prefHeight="306.0" prefWidth="540.0" spacing="30.0">
                <children>
-                  <ListView fx:id="list" prefHeight="263.0" prefWidth="271.0" />
+                  <ListView fx:id="listView" prefHeight="263.0" prefWidth="271.0" />
                   <VBox prefHeight="283.0" prefWidth="109.0" spacing="50.0">
                      <children>
                         <Button fx:id="addNewListButton" mnemonicParsing="false" onAction="#addNewListButtonClicked" text="Add New List" />

@@ -39,7 +39,6 @@ class ToDoListController{
 
     - addButton: Button
     - clearButton: Button
-    - updateButton: Button
     - removeButton: Button
     - submitButton: Button
 
@@ -49,7 +48,9 @@ class ToDoListController{
 
     + addButtonClicked()
     + clearButtonClicked()
-    + updateButtonClicked()
+    + updateItemDescriptionCellEvent()
+    + updateDueDateCellEvent()
+    + updateStatusCellEvent()
     + removeButtonClicked()
     + submitButtonClicked()
 

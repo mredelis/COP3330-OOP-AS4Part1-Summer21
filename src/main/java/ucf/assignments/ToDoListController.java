@@ -10,7 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -18,7 +17,6 @@ import java.time.Month;
 import java.util.ResourceBundle;
 
 public class ToDoListController implements Initializable {
-
 
     @FXML
     private TextField ListNameTextFiled;
@@ -48,8 +46,6 @@ public class ToDoListController implements Initializable {
     @FXML
     private Button clearButton;
     @FXML
-    private Button updateButton;
-    @FXML
     private Button removeButton;
     @FXML
     private Button submitButton;
@@ -64,82 +60,63 @@ public class ToDoListController implements Initializable {
     // Initialize controller class
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // ComboBox Items
-        statusComboBox.getItems().removeAll(statusComboBox.getItems());
-        statusComboBox.getItems().addAll("Complete", "Incomplete");
-
-
-        // set up the columns
-        itemDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("itemDescription"));
-        dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-
-        // load dummy tasks for testing
-        tableView.setItems(getTasks());
-
+        // Create an Observable List of String (Completed, Uncompleted) and add to the ComboBox for user
+        // selection of tasks status
+        // Set up the columns of tableView
         // Update table to allow item description and due date columns to be editable.
-        // The status (complete or incomplete) will be done via pushedButton
-        tableView.setEditable(true);
-
-        // Allow multiple tasks selection at one
-        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-
-//        itemDescriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        // Set tableView to be editable for user to edit description, due date and status
+        // Set tableView selectionMode to select MULTIPLE rows. will be use with the remove method
 
     }
 
-    // Method to create a Task Object and add it to the table
     public void addButtonClicked() {
-        errorLabel.setText("");
+        // get current value of descriptionTextField, dueDatePicker and statusComboBox
+        // create an instance of a new Item object with those (pass those values to an Item constructor)
+        // add newItem to tableView
 
-        if (descriptionTextField.getText().isEmpty()) {
-            errorLabel.setText("Enter item description!");
-        } else {
-            Item newItem = new Item(descriptionTextField.getText(), dueDatePicker.getValue(), statusComboBox.getValue());
-
-            // Get all the items as a list, then add the new task to the list
-            tableView.getItems().add(newItem);
-        }
+        // For junit testing
+        Item testItem = getItem();
     }
 
-    // Method to clear data from Item Description, Date Picker and Combo Box
     public void clearButtonClicked() {
-        descriptionTextField.clear();
-        dueDatePicker.getEditor().clear();
-        statusComboBox.valueProperty().set(null);
+        // clear the descriptionTextField
+        // clear dueDatePicker or set to today's date
+        // clear statusComboBox (set to null)
     }
 
-    // Method to double click on a cell and update item description
-    public void updateButtonClicked() {
+    public void updateItemDescriptionCellEvent() {
+        // When user double clicked on a cell, get the selected Item Object
+        // get the new item description
+        // call method setItemDescription from the Item Object and pass the new description
 
     }
 
+    public void updateDueDateCellEvent() {
+        // When user double clicked on a cell, get the selected Item Object
+        // get the new due date
+        // validate format, this case the user is not selecting from a datePicker
+        // call method setDueDate from the Item Object and pass the new due date
+    }
 
-    // Method to remove selected row(s) from the table
+    public void updateStatusCellEvent() {
+        // When user double clicked on a cell, get the selected Item Object
+        // get the new status (completed or uncompleted)
+        // validate String entered. User shall enter "Completed" or "Uncompleted", this case the user is not selecting from a ComboBox
+        // call method setStatus from the Item Object and pass the new status
+    }
+
     public void removeButtonClicked() {
-
-        errorLabel.setText("");
-
-        ObservableList<Item> allItems = null, selectedRows;
-
-        try {
-            allItems = tableView.getItems();
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-        }
-
-        selectedRows = tableView.getSelectionModel().getSelectedItems();
-
-        for (Item item : selectedRows) {
-            allItems.remove(item);
-        }
+        // Get an ObservableList of all items on tableView
+        // Get an ObservableList of the selected item(s) in tableView
+        // Delete from allItems list the selectedItems (for loop to iterate)
     }
 
     // Method to go back to the ListManager Scene
-    public void submitButtonClicked() {
-
+    public ToDoList submitButtonClicked() {
+        // Get name of ToDoList from ListNameTextFiled
+        // Get an ObservableList of all items on tableView
+        // Return an instance of ToDoList object
+         return getToDoList();
     }
 
 
@@ -156,15 +133,30 @@ public class ToDoListController implements Initializable {
     }
 
 
-    // Method to return an ObservableList of Task Objects
-    public ObservableList<Item> getTasks() {
+    /*
+    Creating a literal of Item type
+     */
+    public Item getItem() {
+
+        // Per the instructions, return a literal.
+        ObservableList<Item> item = FXCollections.observableArrayList();
+        item.add(new Item("Flight to Cuzco", LocalDate.of(2021, Month.AUGUST, 15), "Incomplete"));
+
+        return (Item) item;
+    }
+
+    /*
+    Creating a literal of ToDoList type
+    */
+    public ToDoList getToDoList() {
+
+        // Per the instructions, return a literal.
+        String name = "Machu Picchu Trip";
         ObservableList<Item> item = FXCollections.observableArrayList();
         item.add(new Item("Flight to Lima", LocalDate.of(2021, Month.AUGUST, 13), "Complete"));
-        item.add(new Item("Flight to Cuzco", LocalDate.of(2021, Month.AUGUST, 15), "Incomplete"));
-        item.add(new Item("Train to Machu Picchu", LocalDate.of(2021, Month.AUGUST, 16), "Complete"));
-        item.add(new Item("Tour to Rainbow Mountain", LocalDate.of(2021, Month.AUGUST, 18), "Complete"));
+        ObservableList<ToDoList> singleList = (ObservableList<ToDoList>) new ToDoList(name, item);
 
-        return item;
+        return (ToDoList) singleList;
     }
 
 }

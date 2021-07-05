@@ -79,7 +79,6 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="400.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearButtonClicked" prefWidth="80.0" text="Clear" />
-                        <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateButtonClicked" prefWidth="80.0" text="Update" />
                         <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeButtonClicked" prefHeight="25.0" prefWidth="115.0" text="Remove Item(s)" />
                      </children>
                   </HBox>
