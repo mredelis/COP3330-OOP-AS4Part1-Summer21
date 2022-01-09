@@ -1,6 +1,7 @@
-# COP3330_OOP_Summer21_Assignment4Part1-
+# University of Central Florida
+## COP3330: Object Oriented Programming, Summer 2021
 
-Overview
+#Overview
 
 Using IntelliJ and Gradle, you will create a GUI-based desktop application to allow a user to manage multiple "todo"-type lists.
 
